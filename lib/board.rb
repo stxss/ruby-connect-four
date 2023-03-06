@@ -33,13 +33,14 @@ class Board
 
   def show_board
     if RUBY_PLATFORM =~ /win32/ || RUBY_PLATFORM =~ /mingw/
-        system("cls")
+      system("cls")
     else
-        system("clear")
+      system("clear")
     end
 
     puts "\n" + scoreboard
-    @board.map { |row| puts "                #{row_join(row)}| \n #{splitter}"}
+    @board.map { |row| puts "                #{row_join(row)}| \n #{splitter}" }
+    puts "                  1   2   3   4   5   6   7  "
     puts "\n"
   end
 
@@ -73,3 +74,4 @@ board1 = Board.new
 board1.create_players
 board1.create_board
 board1.show_board
+board1.ask_play

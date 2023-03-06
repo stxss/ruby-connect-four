@@ -73,8 +73,28 @@ class Board
   end
 
   def verify_name(prev_name, input)
-    if /^[a-zA-Z]+$/.match?(input) && input != prev_name
-      input
+    input if /^[a-zA-Z]+$/.match?(input) && input != prev_name
+  end
+
+  def verify_position(input)
+    if input.between?(1, 7)
+      @turn += 1
+      place(input - 1)
+    end
+  end
+
+  def place(column)
+    @current_player_chip = @turn.odd? ? Slot.yellow : Slot.blue
+    5.downto(0) do |row|
+      if @board[row][column] == Slot.empty
+        @board[row][column] = @current_player_chip
+        show_board
+        break
+      elsif @board[0][column] != Slot.empty
+        break
+      else
+        next
+      end
     end
   end
 end

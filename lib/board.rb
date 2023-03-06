@@ -5,21 +5,8 @@ class Board
   attr_accessor :grid, :first_player, :second_player
 
   def initialize
-    @board = nil
-    @turn = 0
-  end
-
-  def create_board
     slot = Slot.empty
-    @board = Array.new(6) { Array.new(7, slot) }
-  end
-
-  def create_players
-    name1 = create
-    name2 = create(name1)
-
-    @player1 = Player.new(name1)
-    @player2 = Player.new(name2)
+    @grid = Array.new(6) { Array.new(7, slot) }
   end
 
   def create(prev_name = nil)

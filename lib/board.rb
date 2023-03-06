@@ -9,13 +9,9 @@ class Board
     @grid = Array.new(6) { Array.new(7, slot) }
   end
 
-  def create(prev_name = nil)
-    loop do
-      puts "Please, enter a valid name: "
-      input = gets.chomp
-      verified = verify_name(prev_name, input)
-      return verified if verified
-    end
+  def create_scoreboard(player1, player2)
+    @first_player = player1
+    @second_player = player2
   end
 
   def show_board

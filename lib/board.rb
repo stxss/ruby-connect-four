@@ -20,7 +20,7 @@ class Board
     end
 
     puts "\n" + scoreboard
-    @board.map { |row| puts "                #{row_join(row)}| \n #{splitter}" }
+    @grid.map { |row| puts "                #{row_join(row)}| \n #{splitter}" }
     puts "                  1   2   3   4   5   6   7  "
     puts "\n"
   end

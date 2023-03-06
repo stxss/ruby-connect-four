@@ -44,6 +44,15 @@ class Board
     puts "\n"
   end
 
+  def ask_play
+    loop do
+      puts "Please, enter a valid position [1-7] to place your piece: "
+      input = gets.chomp.to_i
+      verified = verify_position(input)
+      place(verified) if verified
+    end
+  end
+
   private
 
   def row_join(row)

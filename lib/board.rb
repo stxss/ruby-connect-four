@@ -65,10 +65,10 @@ class Board
 
   def scoreboard
     <<~HEREDOC
-        #{"+--------SCOREBOARD--------+".rjust(80)}
-        #{"|#{@player1.name.rjust(12)} - #{@player1.score.to_s}".rjust(69)}          |
-        #{"|#{@player2.name.rjust(12)} - #{@player2.score.to_s}".rjust(69)}          |
-        #{"+--------------------------+".rjust(80)}
+      #{"+--------SCOREBOARD--------+".rjust(80)}
+      #{"|#{@player1.name.rjust(12)} - #{@player1.score}".rjust(69)}          |
+      #{"|#{@player2.name.rjust(12)} - #{@player2.score}".rjust(69)}          |
+      #{"+--------------------------+".rjust(80)}
     HEREDOC
   end
 

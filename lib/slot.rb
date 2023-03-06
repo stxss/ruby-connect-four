@@ -1,7 +1,7 @@
 require_relative "./text_styles"
 
 class Slot
-    using TextStyles
+  using TextStyles
 
   def self.yellow
     "\u{25cf}".fg_color(:yellow)

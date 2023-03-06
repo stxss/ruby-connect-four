@@ -6,6 +6,7 @@ class Board
 
   def initialize
     @board = nil
+    @turn = 0
   end
 
   def create_board

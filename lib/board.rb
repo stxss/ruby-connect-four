@@ -2,7 +2,7 @@ require_relative("player")
 require_relative("slot")
 
 class Board
-  attr_accessor :player1, :player2
+  attr_accessor :grid, :first_player, :second_player
 
   def initialize
     @board = nil

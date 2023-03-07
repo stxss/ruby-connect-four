@@ -70,6 +70,7 @@ class Game
 
     5.downto(0) do |row|
       if board[row][column] == Slot.empty
+        @current_position = [row, column]
         board[row][column] = @current_player_chip
         break
       elsif board[0][column] != Slot.empty

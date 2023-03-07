@@ -4,9 +4,11 @@ require_relative("player")
 class Game
   attr_accessor :player1, :player2, :board
 
-  def initialize
+  def initialize(player1 = nil, player2 = nil)
     @board = Board.new
     @turn = 0
+    @player1 = player1
+    @player2 = player2
   end
 
   def play
@@ -18,15 +20,19 @@ class Game
       @turn += 1
       place(verified_spot - 1)
       @board.show_board
+      break if @board.has_winner?(@current_position)
     end
+    puts "Congratulations! {} won the game!"
+    restart
   end
 
   def create_players
-    name1 = create
-    name2 = create(name1)
-
-    @player1 = Player.new(name1)
-    @player2 = Player.new(name2)
+    if @player1.nil? && @player2.nil?
+      name1 = create
+      name2 = create(name1)
+      @player1 = Player.new(name1)
+      @player2 = Player.new(name2)
+    end
   end
 
   def create(prev_name = nil)
@@ -70,6 +76,21 @@ class Game
         break
       else
         next
+      end
+    end
+  end
+
+  def restart
+    loop do
+      puts "\nDo you want to play again? Please enter a valid option. [Y/N]"
+      answer = gets.chomp
+      case answer
+      when "Y", "y", "yes".downcase
+        new_game = Game.new(@player1, @player2)
+        new_game.play
+      when "N", "n", "no".downcase
+        puts "Thank you for playing Connect Four!"
+        exit
       end
     end
   end

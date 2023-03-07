@@ -25,6 +25,11 @@ class Board
     puts "\n"
   end
 
+  def has_winner?(checkpoint)
+    @checkpoint = checkpoint
+    v_win? || h_win? || d_win?
+  end
+
   private
 
   def row_join(row)

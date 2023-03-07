@@ -32,6 +32,27 @@ class Board
 
   private
 
+  def v_win?
+    return if @checkpoint.first > 2
+
+    check = []
+    4.times do |i|
+      check << @grid[@checkpoint.first + i][@checkpoint.last]
+    end
+
+    if check.any?(Slot.empty)
+      false
+    elsif check.size == 4 && check.uniq.count == 1
+      true
+    end
+  end
+
+  def h_win?
+  end
+
+  def d_win?
+  end
+
   def row_join(row)
     row.map { |element| "| #{element} " }.join
   end

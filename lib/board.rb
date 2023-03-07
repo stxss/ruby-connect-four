@@ -48,6 +48,9 @@ class Board
   end
 
   def h_win?
+    sequences = @grid[@checkpoint.first].each_cons(4).to_a
+
+    sequences.any? { |arr| arr.uniq.count == 1 && arr.size == 4 && !arr.any?(Slot.empty) }
   end
 
   def d_win?

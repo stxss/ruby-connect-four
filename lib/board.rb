@@ -61,6 +61,31 @@ class Board
   end
 
   def d_win?
+    return false if @checkpoint.first > 2
+    # top right bottom left || top left bottom right
+    rl_win? || lr_win?
+  end
+
+  def rl_win?
+    sequences = []
+    4.times do |i|
+      if @grid[@checkpoint.first + i]
+        sequences << @grid[@checkpoint.first + i][@checkpoint.last - i]
+      end
+    end
+
+    (!sequences.any?(Slot.empty) && sequences.size == 4 && sequences.uniq.count == 1)
+  end
+
+  def lr_win?
+    sequences = []
+    4.times do |i|
+      if @grid[@checkpoint.first + i]
+        sequences << @grid[@checkpoint.first + i][@checkpoint.last + i]
+      end
+    end
+
+    (!sequences.any?(Slot.empty) && sequences.size == 4 && sequences.uniq.count == 1)
   end
 
   def row_join(row)

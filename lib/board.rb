@@ -35,16 +35,23 @@ class Board
   def v_win?
     return if @checkpoint.first > 2
 
-    check = []
-    4.times do |i|
-      check << @grid[@checkpoint.first + i][@checkpoint.last]
-    end
+    new_arr = @grid.transpose.map(&:reverse)
 
-    if check.any?(Slot.empty)
-      false
-    elsif check.size == 4 && check.uniq.count == 1
-      true
-    end
+    sequences = new_arr[@checkpoint.last].each_cons(4).to_a
+
+    sequences.any? { |arr| arr.uniq.count == 1 && arr.size == 4 && !arr.any?(Slot.empty) }
+
+    # Same result but a more "extensive/verbose approach"
+    # check = []
+    # 4.times do |i|
+    #   check << @grid[@checkpoint.first + i][@checkpoint.last]
+    # end
+
+    # if check.any?(Slot.empty)
+    #   false
+    # elsif check.size == 4 && check.uniq.count == 1
+    #   true
+    # end
   end
 
   def h_win?

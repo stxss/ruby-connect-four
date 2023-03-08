@@ -33,7 +33,7 @@ class Board
   private
 
   def v_win?
-    return if @checkpoint.first > 2
+    return false if @checkpoint.first > 2
 
     new_arr = @grid.transpose.map(&:reverse)
 

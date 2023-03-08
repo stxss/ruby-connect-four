@@ -1,6 +1,6 @@
 require_relative("slot")
 class Board
-  attr_accessor :grid, :first_player, :second_player
+  attr_accessor :grid, :first_player, :second_player, :winner
 
   def initialize
     slot = Slot.empty
@@ -10,6 +10,7 @@ class Board
   def create_scoreboard(player1, player2)
     @first_player = player1
     @second_player = player2
+    @winner = nil
   end
 
   def show_board
@@ -27,7 +28,12 @@ class Board
 
   def has_winner?(checkpoint)
     @checkpoint = checkpoint
-    v_win? || h_win? || d_win?
+    is_winner = v_win? || h_win? || d_win?
+    if is_winner
+      @winner = @current_player
+    end
+
+    is_winner
   end
 
   private

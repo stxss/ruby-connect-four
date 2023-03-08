@@ -22,7 +22,7 @@ class Game
       @board.show_board
       break if @board.has_winner?(@current_position)
     end
-    puts "Congratulations! {} won the game!"
+    puts "Congratulations! #{@current_player} won the game!"
     restart
   end
 
@@ -64,6 +64,7 @@ class Game
   end
 
   def place(column)
+    @current_player = @turn.odd? ? @player1.name : @player2.name
     @current_player_chip = @turn.odd? ? Slot.yellow : Slot.blue
 
     board = @board.grid

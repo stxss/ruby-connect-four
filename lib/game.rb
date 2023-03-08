@@ -15,6 +15,7 @@ class Game
     create_players
     @board.create_scoreboard(@player1, @player2)
     loop do
+      @board.show_board
       spot = ask_play
       verified_spot = verify_position(spot)
       @turn += 1

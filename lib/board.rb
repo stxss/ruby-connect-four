@@ -105,8 +105,8 @@ class Board
   def scoreboard
     <<~HEREDOC
       #{"+--------SCOREBOARD--------+".rjust(80)}
-      #{"|#{@first_player.name.rjust(12)} - #{@first_player.score}".rjust(69)}          |
-      #{"|#{@second_player.name.rjust(12)} - #{@second_player.score}".rjust(69)}          |
+      #{"|         #{Slot.yellow} #{@first_player.name} - #{@first_player.score}".rjust(92)}          |
+      #{"|         #{Slot.blue} #{@second_player.name} - #{@second_player.score}".rjust(92)}          |
       #{"+--------------------------+".rjust(80)}
     HEREDOC
   end

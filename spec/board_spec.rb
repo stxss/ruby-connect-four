@@ -13,7 +13,7 @@ describe Board do
         grid[5][0] = Slot.yellow
       end
 
-      it "returns true and prints a message congratulating the winner" do
+      it "returns true" do
         checkpoint = [2, 0]
         result = check.has_winner?(checkpoint)
         expect(result).to eq(true)

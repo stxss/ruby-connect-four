@@ -20,9 +20,9 @@ class Board
       system("clear")
     end
 
-    puts "\n" + scoreboard
-    @grid.map { |row| puts "                #{row_join(row)}| \n #{splitter}" }
-    puts "                  1   2   3   4   5   6   7  "
+    puts "\n" + scoreboard + "\n\n"
+    @grid.map { |row| puts "                      #{row_join(row)}| \n #{splitter}" }
+    puts "                        1   2   3   4   5   6   7  "
     puts "\n"
   end
 
@@ -99,15 +99,15 @@ class Board
   end
 
   def splitter
-    "               +" + "---+" * 7
+    "                     +" + "---+" * 7
   end
 
   def scoreboard
     <<~HEREDOC
-      #{"+--------SCOREBOARD--------+".rjust(80)}
-      #{"|         #{Slot.yellow} #{@first_player.name} - #{@first_player.score}".rjust(92)}          |
-      #{"|         #{Slot.blue} #{@second_player.name} - #{@second_player.score}".rjust(92)}          |
-      #{"+--------------------------+".rjust(80)}
+      #{"+--------SCOREBOARD--------+".center(72)}
+      #{"#{Slot.yellow} #{@first_player.name} - #{@first_player.score}".center(94)}
+      #{"#{Slot.blue} #{@second_player.name} - #{@second_player.score}".center(94)}
+      #{"+--------------------------+".center(72)}
     HEREDOC
   end
 end
